@@ -10,18 +10,18 @@ public class Contrainte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long contrainteId;
+    private Long id;
     private String contrainteTexte;
 
 
     // Getter and Setter
 
-    public Long getContrainteId() {
-        return contrainteId;
+    public Long getId() {
+        return id;
     }
 
-    public void setContrainteId(Long contrainteId) {
-        this.contrainteId = contrainteId;
+    public void setId(Long contrainteId) {
+        this.id = contrainteId;
     }
 
     public String getContrainteTexte() {

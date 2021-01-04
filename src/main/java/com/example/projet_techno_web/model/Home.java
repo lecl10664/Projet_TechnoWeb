@@ -7,7 +7,7 @@ import java.util.List;
 public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long homeId;
+    private Long id;
     private String type;
     private String adresse;
     private String ville;
@@ -31,12 +31,12 @@ public class Home {
 
     // Getter and Setter
 
-    public Long getHomeId() {
-        return homeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setHomeId(Long homeId) {
-        this.homeId = homeId;
+    public void setId(Long homeId) {
+        this.id = homeId;
     }
 
     public String getType() {

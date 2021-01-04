@@ -10,7 +10,7 @@ public class Commentaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long commentaireId;
+    private Long id;
     private String commentaireTexte;
     // private int membreId;
 
@@ -18,12 +18,12 @@ public class Commentaire {
 
     // Getter and Setter
 
-    public Long getCommentaireId() {
-        return commentaireId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCommentaireId(Long commentaireId) {
-        this.commentaireId = commentaireId;
+    public void setId(Long commentaireId) {
+        this.id = commentaireId;
     }
 
     public String getCommentaireTexte() {

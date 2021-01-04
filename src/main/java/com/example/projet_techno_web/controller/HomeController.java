@@ -35,7 +35,7 @@ public class HomeController {
     public void deleteHome(@RequestParam Long id) {
         homeRepo.deleteById(id);
     }
-    
+
 
 
 

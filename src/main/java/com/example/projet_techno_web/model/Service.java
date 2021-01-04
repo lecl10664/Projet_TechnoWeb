@@ -10,19 +10,19 @@ public class Service {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long serviceId;
+    private Long id;
     private String serviceTexte;
 
 
 
     // Getter and Setter
 
-    public Long getServiceId() {
-        return serviceId;
+    public Long getId() {
+        return id;
     }
 
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
+    public void setId(Long serviceId) {
+        this.id = serviceId;
     }
 
     public String getServiceTexte() {
