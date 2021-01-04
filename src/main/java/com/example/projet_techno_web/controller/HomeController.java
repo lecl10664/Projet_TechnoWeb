@@ -29,8 +29,13 @@ public class HomeController {
     @PostMapping("/home")
     public Home saveHome(@RequestBody Home home) {
         return homeRepo.save(home);
-        
     }
+
+    @DeleteMapping("/home")
+    public void deleteHome(@RequestParam Long id) {
+        homeRepo.deleteById(id);
+    }
+    
 
 
 
