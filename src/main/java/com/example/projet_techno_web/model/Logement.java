@@ -88,11 +88,11 @@ public class Logement {
         this.ville = ville;
     }
 
-    public int getCodePostal() {
+    public Integer getCodePostal() {
         return codePostal;
     }
 
-    public void setCodePostal(int codePostal) {
+    public void setCodePostal(Integer codePostal) {
         this.codePostal = codePostal;
     }
 

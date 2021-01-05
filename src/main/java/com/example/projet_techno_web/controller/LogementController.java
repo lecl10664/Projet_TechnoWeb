@@ -16,23 +16,23 @@ public class LogementController {
     @Autowired
     LogementDAO logementDAO;
 
-    @GetMapping("/homeListe")
-    public List<Logement> getHomeListe() {
+    @GetMapping("/logementListe")
+    public List<Logement> getLogementListe() {
         return logementDAO.findAll();
     }
 
-    @GetMapping("/home")
-    public Optional<Logement> getHomeById(@RequestParam Long id) {
+    @GetMapping("/logement")
+    public Optional<Logement> getLogementById(@RequestParam Long id) {
         return logementDAO.findById(id);
     }
 
-    @PostMapping("/home")
-    public Logement saveHome(@RequestBody Logement logement) {
+    @PostMapping("/logement")
+    public Logement saveLogement(@RequestBody Logement logement) {
         return logementDAO.save(logement);
     }
 
-    @DeleteMapping("/home")
-    public void deleteHome(@RequestParam Long id) {
+    @DeleteMapping("/logement")
+    public void deleteLogement(@RequestParam Long id) {
         logementDAO.deleteById(id);
     }
 

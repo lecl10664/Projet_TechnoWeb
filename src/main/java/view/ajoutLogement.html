@@ -8,10 +8,10 @@
 
 <!-- Formulaire pour ajouter une maison -->
 
-<form onsubmit="saveHome(this);return false">
-    <label>Id :<input name="logementId" type="number" disabled></label>
-    <label>Nom de la maison :<input name="logementName" type="text"></label>
-    <label>Maison ou appartement :<input name="logementType" type="text"></label>
+<form onsubmit="saveLogement(this);return false">
+    <label>Id :<input id="logementId" name="logementId" type="number" disabled></label>
+    <label>Nom de la maison :<input id="logementNom" name="logementNom" type="text"></label>
+    <label>Maison ou Appartement :<input id="logementType" name="logementType" type="text"></label>
 
     <input type="submit">
 

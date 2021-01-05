@@ -1,14 +1,13 @@
 function saveLogement(form) {
     const logement = {
         id:form.logementId.value,
-        name:form.logementName.value,
+        name:form.logementNom.value,
         type:form.logementType.value,
     }
 
-    console.log(logement);
 
     // prepare the post request
-    fetch("http://localhost:3306/projet_web_tech", {
+    fetch("http://localhost:8080/logement", {
         method:"POST",
         headers: {"Accept": "application/json, text/plain, */*",
         "Content-type":"application/json"},
@@ -21,8 +20,10 @@ function saveLogement(form) {
     // set the input fields with the return logement values
 
         .then(data => {
-            document.querySelector("#logementId")
-
+            console.log(data)
+            document.querySelector("#logementId").value = data.id;
+            document.querySelector("#logementNom").value = data.nom;
+            document.querySelector("#logementType").value = data.type;
         })
 
 
