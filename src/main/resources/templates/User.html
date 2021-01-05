@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Page User</title>
 </head>
 <body>
 
-Ceci est la page de
+
+
+Ceci est la page de <d th:text="${user.lName}"></d> <d th:text="${user.fName}"></d>
 
 </body>
 </html>

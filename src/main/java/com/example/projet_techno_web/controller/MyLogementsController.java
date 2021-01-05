@@ -28,8 +28,8 @@ public class MyLogementsController {
     @GetMapping("/mylogements")
     public String showPage(@ModelAttribute("UserLogged") User userlogged, Model model){
         Long idMembre = userlogged.getId();
-        model.addAttribute("listLogements", logementDAO.findAll());
-        //model.addAttribute("listLogements",logementDAO.findByIdMembre(idMembre));
+        //model.addAttribute("listLogements", logementDAO.findAll());
+        model.addAttribute("listLogements",logementDAO.findByIdMembre(idMembre));
         return "MyLogements";
     }
 
