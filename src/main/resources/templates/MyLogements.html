@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compte</title>
+</head>
+<body>
+Bienvenue <p th:text="${UserLogged.lName}"></p>
+Voici tes logements.
+Logement :
+
+<div th:each="logement:${listLogements}">
+
+    <p th:text="${logement.adresse}"></p>
+    <p th:text="${logement.ville}"></p>
+    <p th:text="${logement.codepostal}"></p>
+    <p th:text="${logement.pays}"></p>
+</div>
+
+
+
+
+</body>
+</html>

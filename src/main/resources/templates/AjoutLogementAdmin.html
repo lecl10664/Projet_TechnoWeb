@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout Logement Admin</title>
+</head>
+<body>
+
+<form action="" th:action="@{/addLogementAdmin}" th:object="${newLogement}" method="POST">
+    <p>type : </p>
+    <input type="text" th:field="*{type}">
+    <p>adresse:</p>
+    <input type="text" th:field="*{adresse}">
+    <p>ville:</p>
+    <input type="text" th:field="*{ville}">
+    <p>codepostal:</p>
+    <input type="text" th:field="*{codepostal}">
+    <p>pays:</p>
+    <input type="text" th:field="*{pays}">
+    <p>description:</p>
+    <input type="text" th:field="*{description}">
+    <input type="text" th:field="*{idMembre}" th:type="long" th:value="1">
+    <input type="text" th:field="*{idContrainte}" th:type="long" th:value="1">
+    <input type="text" th:field="*{idService}" th:type="long" th:value="1">
+    <input type="text" th:field="*{idCommentaire}" th:type="long" th:value="1">
+
+    <input type="submit">
+</form>
+
+</body>
+</html>
