@@ -1,6 +1,7 @@
 package com.example.projet_techno_web.model;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.List;
 
 @Entity

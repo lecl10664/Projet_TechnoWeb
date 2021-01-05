@@ -23,7 +23,7 @@ function saveLogement(form) {
             console.log(data)
             document.querySelector("#logementId").value = data.id;
             document.querySelector("#logementNom").value = data.nom;
-            document.querySelector("#logementType").value = data.type;
+            document.querySelector(".logementType").value = data.type;
         })
 
 
