@@ -19,5 +19,5 @@ function showLogement() {
 
 
 function navigate(logementId) {
-    window.location.href='/logement.html?id=' + logementId.value();
+    window.location.href='/logement.html?id=' + logementId;
 }
