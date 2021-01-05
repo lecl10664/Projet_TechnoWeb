@@ -1,62 +1,67 @@
 package com.example.projet_techno_web.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Logement {
-
     @Id
-    @GeneratedValue
-    private long id;
-
-    @Column(length=1000000)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String nom;
     private String type;
     @Column(length=1000000)
     private String adresse;
-    @Column(length=1000000)
     private String ville;
-    @Column(length=1000000)
-    private String codepostal;
-    @Column(length=1000000)
+    private Integer codePostal;
     private String pays;
+
     @Column(length=1000000)
     private String description;
-    private long idMembre;
-    private long idContrainte;
-    private long idService;
-    private long idCommentaire;
 
 
+    @OneToMany
+    private List<Contrainte> listeContraintes;
 
-    //Constructors
-    public Logement() {
-    }
+    @OneToMany
+    private List<Service> listeServices;
 
-    public Logement(long id, String type, String adresse, String ville, String codepostal, String pays, String description,  long idMembre, long idContrainte, long idService, long idCommentaire) {
+    @OneToMany
+    private List<Commentaire> listeCommentaires;
+
+
+    // Constructor
+
+    public Logement(Long id, String nom, String type, String adresse, String ville, Integer codePostal, String pays, String description) {
         this.id = id;
+        this.nom = nom;
         this.type = type;
         this.adresse = adresse;
         this.ville = ville;
-        this.codepostal = codepostal;
+        this.codePostal = codePostal;
         this.pays = pays;
         this.description = description;
-        this.idMembre = idMembre;
-        this.idContrainte = idContrainte;
-        this.idService = idService;
-        this.idCommentaire = idCommentaire;
-
     }
 
-    //Getters et setters
-    public long getId() {
+    public Logement() {
+    }
+
+    // Getter and Setter
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(Long homeId) {
+        this.id = homeId;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getType() {
@@ -83,12 +88,12 @@ public class Logement {
         this.ville = ville;
     }
 
-    public String getCodepostal() {
-        return codepostal;
+    public int getCodePostal() {
+        return codePostal;
     }
 
-    public void setCodepostal(String codepostal) {
-        this.codepostal = codepostal;
+    public void setCodePostal(int codePostal) {
+        this.codePostal = codePostal;
     }
 
     public String getPays() {
@@ -107,31 +112,27 @@ public class Logement {
         this.description = description;
     }
 
-    public long getIdContrainte() {
-        return idContrainte;
+    public List<Contrainte> getListeContraintes() {
+        return listeContraintes;
     }
 
-    public void setIdContrainte(long idContrainte) {
-        this.idContrainte = idContrainte;
+    public void setListeContraintes(List<Contrainte> listeContraintes) {
+        this.listeContraintes = listeContraintes;
     }
 
-    public long getIdService() {
-        return idService;
+    public List<Service> getListeServices() {
+        return listeServices;
     }
 
-    public void setIdService(long idService) {
-        this.idService = idService;
+    public void setListeServices(List<Service> listeServices) {
+        this.listeServices = listeServices;
     }
 
-    public long getIdCommentaire() {
-        return idCommentaire;
+    public List<Commentaire> getListeCommentaires() {
+        return listeCommentaires;
     }
 
-    public void setIdCommentaire(long idCommentaire) {
-        this.idCommentaire = idCommentaire;
+    public void setListeCommentaires(List<Commentaire> listeCommentaires) {
+        this.listeCommentaires = listeCommentaires;
     }
-
-    public long getIdMembre() { return idMembre; }
-
-    public void setIdMembre(long idMembre) { this.idMembre = idMembre; }
 }

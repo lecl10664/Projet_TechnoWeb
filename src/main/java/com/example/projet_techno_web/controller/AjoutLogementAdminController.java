@@ -29,7 +29,7 @@ public class AjoutLogementAdminController {
     @PostMapping("/addLogementAdmin")
     public String addAdminLogement(@ModelAttribute Logement newLogement){
         String dir = "";
-        Logement logement = new Logement(newLogement.getId(), newLogement.getType(), newLogement.getAdresse(), newLogement.getVille(), newLogement.getCodepostal(), newLogement.getPays(), newLogement.getDescription(), newLogement.getIdMembre(), newLogement.getIdContrainte(), newLogement.getIdService(), newLogement.getIdCommentaire());
+        Logement logement = new Logement(newLogement.getId(), newLogement.getNom(), newLogement.getType(), newLogement.getAdresse(), newLogement.getVille(), newLogement.getCodePostal(), newLogement.getPays(), newLogement.getDescription());
         logementDAO.save(logement);
         return "redirect:"+dir;
     }
