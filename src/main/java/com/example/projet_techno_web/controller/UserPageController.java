@@ -23,6 +23,8 @@ public class UserPageController {
     @GetMapping("/user/{id}")
     public String showPage(Model model, @PathVariable Long id){
 
+        model.addAttribute("newUser", new User());
+
         Optional<User> listUser = userDAO.findById(id);
         User checkUser = listUser.get();
         model.addAttribute("user", checkUser);
@@ -32,7 +34,7 @@ public class UserPageController {
 
 
     @PostMapping("/user")
-    public String userPage(@ModelAttribute User newUser){
+    public String redirectUserPage(@ModelAttribute User newUser){
         User user = new User(newUser.getId(), newUser.getlName(), newUser.getfName(), newUser.geteMail(), newUser.getPassword());
         Long idUser = user.getId() +1;
         return "redirect:user/"+idUser;

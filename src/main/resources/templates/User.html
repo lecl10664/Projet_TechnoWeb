@@ -10,5 +10,9 @@
 
 Ceci est la page de <d th:text="${user.lName}"></d> <d th:text="${user.fName}"></d>
 
+<form action="" th:action="@{/chat}" th:object="${newUser}" method="POST">
+    <input type="submit" th:value="${user.id}" th:field="*{id}">
+</form>
+
 </body>
 </html>
