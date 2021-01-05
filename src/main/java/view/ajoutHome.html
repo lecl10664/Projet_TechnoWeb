@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- Formulaire pour ajouter une maison -->
+
+<form onsubmit="saveHome(this);return false">
+    <label>Id :<input name="homeId" type="number" disabled></label>
+    <label>Nom de la maison :<input name="homeName" type="text"></label>
+    <label>Maison ou appartement :<input name="homeType" type="text"></label>
+
+    <input type="submit">
+
+</form>
+
+<script src="js/ajoutHome.js"></script>
+</body>
+</html>

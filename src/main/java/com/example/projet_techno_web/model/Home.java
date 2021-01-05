@@ -8,6 +8,7 @@ public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nom;
     private String type;
     private String adresse;
     private String ville;
@@ -37,6 +38,14 @@ public class Home {
 
     public void setId(Long homeId) {
         this.id = homeId;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getType() {
