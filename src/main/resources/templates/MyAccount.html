@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compte</title>
+</head>
+<body>
+Voici ton compte.
+
+Nom : <p th:text="${UserLogged.lName}"></p>
+Prénom : <p th:text="${UserLogged.fName}"></p>
+Email : <p th:text="${UserLogged.eMail}"></p>
+
+Veux-tu modifier ton compte ?
+
+<form action="" th:action="@{/myaccount}" th:object="${newUser}" method="POST">
+    <input type="text" th:field="*{lName}" th:placeholder="${UserLogged.lName}">
+    <input type="text" th:field="*{fName}" th:placeholder="${UserLogged.fName}">
+    <input type="text" th:field="*{eMail}" th:placeholder="${UserLogged.eMail}">
+    <input type="text" th:field="*{password}" th:placeholder="${UserLogged.password}">
+    <input type="submit">
+</form>
+
+
+
+</body>
+</html>
