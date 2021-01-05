@@ -19,7 +19,6 @@ public class Logement {
     @Column(length=1000000)
     private String description;
 
-
     @OneToMany
     private List<Contrainte> listeContraintes;
 
@@ -28,6 +27,9 @@ public class Logement {
 
     @OneToMany
     private List<Commentaire> listeCommentaires;
+
+    @OneToOne
+    private User user;
 
 
     // Constructor
@@ -134,5 +136,13 @@ public class Logement {
 
     public void setListeCommentaires(List<Commentaire> listeCommentaires) {
         this.listeCommentaires = listeCommentaires;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
