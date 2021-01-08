@@ -12,8 +12,8 @@ import java.util.List;
 public interface ChatDAO extends JpaRepository<Chat, Long> {
 
     @Query("select c from Chat c where c.idR= :iDR AND c.idS= :iDS")
-    public List<Chat> findByIdS(@Param("iDR") Long iDR, @Param("iDS") Long iDS);
+    public List<Chat> findByIdS(@Param("iDR") long iDR, @Param("iDS") long iDS);
 
     @Query("select c from Chat c where c.idR= :iDS AND c.idS= :iDR")
-    public List<Chat> findByIdR(@Param("iDR") Long iDR, @Param("iDS") Long iDS);
+    public List<Chat> findByIdR(@Param("iDR") long iDR, @Param("iDS") long iDS);
 }

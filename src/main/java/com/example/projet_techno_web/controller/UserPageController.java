@@ -1,6 +1,7 @@
 package com.example.projet_techno_web.controller;
 
 import com.example.projet_techno_web.data.UserDAO;
+import com.example.projet_techno_web.model.Chat;
 import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes({"UserLogged"})
 public class UserPageController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class UserPageController {
     @PostMapping("/user")
     public String redirectUserPage(@ModelAttribute User newUser){
         User user = new User(newUser.getId(), newUser.getlName(), newUser.getfName(), newUser.geteMail(), newUser.getPassword());
-        Long idUser = user.getId() +1;
+        Long idUser = user.getId();
         return "redirect:user/"+idUser;
     }
 }
