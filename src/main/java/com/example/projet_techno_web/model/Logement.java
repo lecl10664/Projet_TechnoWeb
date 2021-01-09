@@ -1,7 +1,6 @@
 package com.example.projet_techno_web.model;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.List;
 
 @Entity
@@ -11,20 +10,18 @@ public class Logement {
     private Long id;
     private String nom;
     private String type;
-    @Column(length=1000000)
     private String adresse;
-    private String ville;
     private Integer codePostal;
-    private String pays;
+    private String ville;
 
     @Column(length=1000000)
     private String description;
 
-    @OneToMany
-    private List<Contrainte> listeContraintes;
+    @Column(length=1000000)
+    private String contraintes;
 
-    @OneToMany
-    private List<Service> listeServices;
+    @Column(length=1000000)
+    private String services;
 
     @OneToMany
     private List<Commentaire> listeCommentaires;
@@ -35,14 +32,13 @@ public class Logement {
 
     // Constructor
 
-    public Logement(Long id, String nom, String type, String adresse, String ville, Integer codePostal, String pays, String description) {
+    public Logement(Long id, String nom, String type, String adresse, String ville, Integer codePostal, String description) {
         this.id = id;
         this.nom = nom;
         this.type = type;
         this.adresse = adresse;
         this.ville = ville;
         this.codePostal = codePostal;
-        this.pays = pays;
         this.description = description;
     }
 
@@ -99,14 +95,6 @@ public class Logement {
         this.codePostal = codePostal;
     }
 
-    public String getPays() {
-        return pays;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -115,20 +103,12 @@ public class Logement {
         this.description = description;
     }
 
-    public List<Contrainte> getListeContraintes() {
-        return listeContraintes;
+    public User getUser() {
+        return user;
     }
 
-    public void setListeContraintes(List<Contrainte> listeContraintes) {
-        this.listeContraintes = listeContraintes;
-    }
-
-    public List<Service> getListeServices() {
-        return listeServices;
-    }
-
-    public void setListeServices(List<Service> listeServices) {
-        this.listeServices = listeServices;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Commentaire> getListeCommentaires() {
@@ -139,11 +119,20 @@ public class Logement {
         this.listeCommentaires = listeCommentaires;
     }
 
-    public User getUser() {
-        return user;
+    public String getServices() {
+        return services;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setServices(String services) {
+        this.services = services;
+    }
+
+    public String getContraintes() {
+        return contraintes;
+    }
+
+    public void setContraintes(String contraintes) {
+        this.contraintes = contraintes;
     }
 }
+

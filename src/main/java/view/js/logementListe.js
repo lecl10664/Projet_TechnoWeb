@@ -10,6 +10,9 @@ function showLogement() {
                 <td>${element.id}</td>
                 <td>${element.nom}</td>
                 <td>${element.type}</td>
+                <td>${element.adresse}</td>
+                <td>${element.codePostal}</td>
+                <td>${element.ville}</td>
                 <td><button onclick='navigate(${element.id})'>Voir le logement</button></td>
                 </tr>
             `  )
@@ -19,5 +22,5 @@ function showLogement() {
 
 
 function navigate(logementId) {
-    window.location.href='/logement.html?id=' + logementId;
+    window.location.href='/projet_techno_web/view/logement.html?id=' + logementId;
 }
