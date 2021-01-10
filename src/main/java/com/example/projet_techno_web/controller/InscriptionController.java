@@ -44,6 +44,7 @@ public class InscriptionController {
         //    dir = "signup";
         //}
 
+
         userDAO.save(user);
 
         return "redirect:"+dir;
