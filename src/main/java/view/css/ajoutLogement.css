@@ -1,3 +1,49 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the top navigation bar */
+.header {
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 5%;
+    padding: 1%;
+}
+
+/* Style the topnav links */
+.header a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.titre {
+    display: block;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Style the footer */
+.footer {
+    background-color: #ddd;
+    padding: 1%;
+}
+
 
 .form-style-1 {
     margin:10px auto;
@@ -43,8 +89,8 @@ select{
 .form-style-1 input[type=email]:focus,
 .form-style-1 textarea:focus,
 .form-style-1 select:focus{
-    box-shadow: 0 0 8px #88D5E9;
-    border: 1px solid #88D5E9;
+    box-shadow: 0 0 8px #575853;
+    border: 1px solid #575853;
 }
 .form-style-1 .field-divided{
     width: 49%;
