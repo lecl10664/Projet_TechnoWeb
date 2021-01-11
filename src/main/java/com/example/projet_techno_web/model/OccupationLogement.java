@@ -14,6 +14,7 @@ public class OccupationLogement {
     private long idMembre;
     private long idLogement;
     private String date;
+    private String etat;
 
 
 
@@ -21,11 +22,12 @@ public class OccupationLogement {
     //Constructors
     public OccupationLogement() {
     }
-    public OccupationLogement(long id, long idMembre, long idLogement, String date) {
+    public OccupationLogement(long id, long idMembre, long idLogement, String date, String etat) {
         this.id = id;
         this.idMembre = idMembre;
         this.idLogement = idLogement;
         this.date = date;
+        this.etat = etat;
     }
 
 
@@ -60,5 +62,13 @@ public class OccupationLogement {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 }

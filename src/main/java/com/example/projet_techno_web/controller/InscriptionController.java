@@ -1,7 +1,9 @@
 package com.example.projet_techno_web.controller;
 
 
+import com.example.projet_techno_web.data.ChatDAO;
 import com.example.projet_techno_web.data.UserDAO;
+import com.example.projet_techno_web.model.Chat;
 import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +19,9 @@ public class InscriptionController {
 
     @Autowired
     private final UserDAO userDAO;
+    private final ChatDAO chatDAO;
 
-    public InscriptionController(UserDAO userDAO) { this.userDAO = userDAO;}
+    public InscriptionController(UserDAO userDAO, ChatDAO chatDAO) { this.userDAO = userDAO; this.chatDAO = chatDAO;}
 
 
     @GetMapping("/signup")
@@ -43,9 +46,15 @@ public class InscriptionController {
         //} else {
         //    dir = "signup";
         //}
-
-
+        List<User> listUser = userDAO.findAll();
         userDAO.save(user);
+
+        for (int i = 0; i< listUser.size(); i++){
+            Chat chat = new Chat(user.getId(), listUser.get(i).getId());
+            chatDAO.save(chat);
+        }
+
+
 
         return "redirect:"+dir;
     }

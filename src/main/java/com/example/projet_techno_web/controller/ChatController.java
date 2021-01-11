@@ -24,9 +24,9 @@ public class ChatController {
     @Autowired
     private final ChatDAO chatDAO;
     private final UserDAO userDAO;
-    private final ChatUpdateDAO chatUpdateDAO;
 
-    public ChatController(ChatDAO chatDAO, UserDAO userDAO, ChatUpdateDAO chatUpdateDAO) {this.chatDAO =chatDAO; this.userDAO=userDAO; this.chatUpdateDAO = chatUpdateDAO;}
+
+    public ChatController(ChatDAO chatDAO, UserDAO userDAO) {this.chatDAO =chatDAO; this.userDAO=userDAO;}
 
 
 
@@ -66,8 +66,11 @@ public class ChatController {
         User checkUser = listUser.get();
         model.addAttribute("UserChat", checkUser);
 
+
         return "redirect:chat/"+dir;
     }
+
+
 
 
     @PostMapping("/chat")
@@ -75,13 +78,12 @@ public class ChatController {
         Chat chat = new Chat();
         List<Message> listMsg;
 
-
-        List<Chat> listChat = chatDAO.findByIDs(1,2);
+        List<Chat> listChat = chatDAO.findByIDs(1, msg.getIdUser());
         chat = listChat.get(0);
         chat.getMessages().add(msg);
         chatDAO.save(chat);
 
-        return "redirect:chat/2";
+        return "redirect:chat/"+msg.getId();
     }
 
 }
