@@ -14,10 +14,10 @@
     <p th:text="${user.fName}"></p>
     <p th:text="${user.eMail}"></p>
     <p th:text="${user.password}"></p>
-    <p th:texth="${user.id}"></p>
+    <p th:text="${user.id}"></p>
 
     <form action="" th:action="@{/user}" th:object="${newUser}" method="POST">
-        <input type="text" th:field="*{id}">
+        <input th:value="${user.id}" type="text" th:field="${newUser.id}">
         <input type="submit">
     </form>
 </div>

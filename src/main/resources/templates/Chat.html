@@ -7,25 +7,28 @@
 <body>
 
 Bienvenue <p th:text="${UserLogged.lName}"></p><br> <p th:text="${UserLogged.id}"></p>
-Tu chat avec <p th:text="${user.lName}"></p><br>
+Tu chat avec <p th:text="${UserChat.lName}"></p><br>
+
 
 Message recu :
-<div th:each="chat:${chatEnvoye}">
-    <p th:text="${chat.text}"></p>
+<div th:each="msg:${listMsg}">
+    <div th:if="${msg.idUser} == ${UserChat.id}">
+        <p th:text="${msg.text}" style="color: red;"></p>
+    </div>
+    <div th:if="${msg.idUser} == ${UserLogged.id}">
+        <p th:text="${msg.text}" style="color: blue;"></p>
+    </div>
 </div>
-
-Message envoyé :
-<div th:each="chat:${chatRecu}">
-    <p th:text="${chat.text}"></p>
-</div>
-
 
 Envoyer un message
-<form action="" th:action="@{/chat}" th:object="${newChat}" method="POST">
+<form action="" th:action="@{/chat}" th:object="${newMsg}" method="POST">
     <p>Message:</p>
     <input type="text" th:field="*{text}">
+    <input type="text" th:field="*{idUser}">
     <input type="submit">
 </form>
+
+
 
 </body>
 </html>

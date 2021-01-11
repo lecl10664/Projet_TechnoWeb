@@ -41,7 +41,7 @@ public class MyAccountController {
 
     @PostMapping("/myaccount")
     public String modifyUser(@ModelAttribute("UserLogged") User userLogged, @ModelAttribute("newUser") User newUser, Model model){
-        User user = new User(userLogged.getId(), newUser.getlName(), newUser.getfName(), newUser.geteMail(), newUser.getPassword());
+        User user = new User(newUser.getId(), newUser.getlName(), newUser.getfName(), newUser.geteMail(), newUser.getPassword());
 
         Optional<User> listUser = userDAO.findById(userLogged.getId());
         User checkUser = listUser.get();

@@ -1,9 +1,9 @@
 package com.example.projet_techno_web.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Chat {
@@ -12,20 +12,20 @@ public class Chat {
     @GeneratedValue
     private long id;
 
-    @Column(length=1000000)
-    private String text;
-
     private long idS;
     private long idR;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn( name = "id2", referencedColumnName = "id")
+    List<Message> messages = new ArrayList<>();
+
 
 
     //Constructors
     public Chat() {
     }
 
-    public Chat(long id, String text, long idS, long idR) {
-        this.id = id;
-        this.text = text;
+    public Chat(long idS, long idR) {
         this.idS = idS;
         this.idR = idR;
     }
@@ -37,14 +37,6 @@ public class Chat {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public long getIdS() {
@@ -62,6 +54,15 @@ public class Chat {
     public void setIdR(long idR) {
         this.idR = idR;
     }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
 }
 
 

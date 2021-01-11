@@ -30,6 +30,8 @@ public class UserPageController {
         Optional<User> listUser = userDAO.findById(id);
         User checkUser = listUser.get();
         model.addAttribute("user", checkUser);
+
+
         return "User";
     }
 
