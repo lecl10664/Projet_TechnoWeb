@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Page User</title>
 </head>
 <body>
 
-Ceci est la page de
+Bienvenue <p th:text="${UserLogged.lName}"></p> <p th:text="${UserLogged.id}"></p>
+
+Ceci est la page de <d th:text="${user.lName}"></d> <d th:text="${user.fName}"></d>
+
+<form action="" th:action="@{/toChat}" th:object="${newUser}" method="POST">
+    <input type="text" th:field="*{id}" th:value="${user.id}" style="visibility: visible">
+    <input type="submit">
+</form>
 
 </body>
 </html>
