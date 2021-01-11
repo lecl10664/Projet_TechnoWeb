@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
+@SessionAttributes({"UserLogged"})
 public class LogementController {
 
     @Autowired
@@ -26,6 +27,12 @@ public class LogementController {
         return logementDAO.findByVille(ville);
 
     }
+
+    //Exemple pour recup infos de session
+    //@GetMapping("/logementExemple")
+    //public String logement (@ModelAttribute("UserLogged") User userLoggged) {
+    // et la tu as l'object userLogged, qui est un user avec les infos du user connecté
+
 
     @GetMapping("/logement")
     public Optional<Logement> getLogementById(@RequestParam Long id) {
