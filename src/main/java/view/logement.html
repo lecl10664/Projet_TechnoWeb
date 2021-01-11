@@ -3,11 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Logement</title>
+    <link rel="stylesheet" href="css/logement.css">
 </head>
 <body>
-<h1>Cette page affiche le logement sélectionné</h1>
-<div id="afficheLogement"></div>
+<div class="header">
+    <p class="titre">Mobil'Home</p>
+    <a href="logementListe.html">Logements disponibles</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+</div>
 
+<div class="row">
+<div class="columnL">
+    <h1 id="nom"></h1>
+    <p id="ville"></p>
+    <img id="imgLogement" src="img/maison.jpg" alt="image maison/logement" width="70%">
+    <p id="type"></p>
+    <p id="adresse"></p>
+</div>
+<div class="columnR">
+    <h3>Ce logement vous plait ?</h3>
+    <p>Sur quelle date ?</p>
+    <form onsubmit="return false">
+        <label>Date de votre séjour
+            <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
+        </label>
+        <input type="submit" value="OK">
+    </form>
+</div>
+</div>
+<div class="services">
+    <h3>Services à effectuer sur place</h3>
+    <p id="services"></p>
+</div>
+<div class="contraintes">
+    <h3>Contraintes du logement</h3>
+    <p id="contraintes"></p>
+</div>
+
+
+
+<div class="footer">
+    <p>Footer</p>
+</div>
 
 <script src="js/showLogement.js"></script>
 </body>

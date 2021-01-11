@@ -20,6 +20,11 @@ public class LogementController {
     public List<Logement> getLogementListe() {
         return logementDAO.findAll();
     }
+    @GetMapping("/logementRecherche")
+    public Optional<Logement> getLogementRechercheById(@RequestParam Long id) {
+        return logementDAO.findById(id);
+    }
+
 
     @GetMapping("/logement")
     public Optional<Logement> getLogementById(@RequestParam Long id) {

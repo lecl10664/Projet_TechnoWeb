@@ -41,35 +41,58 @@ body {
 /* Style the footer */
 .footer {
     background-color: #ddd;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
+    padding: 1%;
     text-align: center;
 }
 
 /* Fin header et footer style */
 
-
-h2 {
-    font-size: 26px;
-    text-align: center;
+/* Container for flexboxes */
+.row {
+    display: flex;
 }
 
-.tableau {
-    background-color: #FFFFFF;
-    border-width: 2px;
-    border-color: #545454;
-    border-style: solid;
-    color: #000000;
-    text-align: center;
+/* Create three equal columns that sits next to each other */
+.columnL {
+    flex: 1;
+    padding-left: 10%;
 }
 
-td, th {
-    padding: 20px;
-    margin: 10px;
+.columnR {
+    flex: 1;
+    padding: 5%;
 }
 
-thead {
-    background-color: gray;
+#nom {
+
+}
+
+#ville {
+    color: #545454;
+    margin-top: -1%;
+}
+#type {
+    font-style: oblique;
+}
+
+#adresse {
+    text-decoration: underline;
+    margin-top: -1%;
+}
+
+.services {
+    border-top: #545454 solid 2px;
+    margin: 0 10%;
+}
+.services h3 {
+    color: #545454;
+}
+
+.contraintes {
+    border-top: #545454 solid 2px;
+    margin: 0 10%;
+}
+.contraintes h3 {
+    color: #545454;
 }

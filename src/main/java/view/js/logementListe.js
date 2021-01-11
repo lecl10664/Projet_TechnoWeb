@@ -24,3 +24,7 @@ function showLogement() {
 function navigate(logementId) {
     window.location.href='/projet_techno_web/view/logement.html?id=' + logementId;
 }
+
+
+
+

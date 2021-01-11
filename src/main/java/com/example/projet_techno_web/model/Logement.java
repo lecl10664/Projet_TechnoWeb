@@ -134,5 +134,6 @@ public class Logement {
     public void setContraintes(String contraintes) {
         this.contraintes = contraintes;
     }
+
 }
 
