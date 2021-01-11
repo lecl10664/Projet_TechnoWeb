@@ -1,7 +1,10 @@
-showLogement();
+const urlString = window.location.search;
+const urlParams = new URLSearchParams(urlString);
 
-function showLogement() {
-    fetch("http://localhost:8080/logementListe")
+resultatRecherche();
+
+function resultatRecherche() {
+    fetch('http://localhost:8080/logementRecherche?ville=' + urlParams.get('ville'))
         .then(response => response.json())
         .then(data => {
             let tableInfo = "";
@@ -17,21 +20,11 @@ function showLogement() {
                 </tr>
             `  )
             document.querySelector("#listTable").innerHTML = tableInfo;
+            document.querySelector("#titreRecherche").innerHTML =
+                `Logement disponibles à ${urlParams.get('ville')}`;
         })
 }
-
 
 function navigate(logementId) {
     window.location.href='/projet_techno_web/view/logement.html?id=' + logementId;
 }
-
-function recherche(villeRecherche) {
-    window.location.href='/projet_techno_web/view/logementRecherche.html?ville=' + villeRecherche;
-
-}
-
-
-
-
-
-

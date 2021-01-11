@@ -51,25 +51,45 @@ body {
 /* Fin header et footer style */
 
 
-h2 {
-    font-size: 26px;
+h1 {
+    font-size: 30px;
     text-align: center;
 }
 
+.recherche {
+    margin: 3% 25%;
+    padding: 0.5% 1%;
+    border: #545454 solid 3px;
+    border-radius: 10px;
+}
+.recherche input {
+    padding: 1%;
+    font-size: medium;
+}
 .tableau {
-    background-color: #FFFFFF;
-    border-width: 2px;
-    border-color: #545454;
-    border-style: solid;
-    color: #000000;
-    text-align: center;
+    margin: 0 20%;
 }
 
-td, th {
-    padding: 20px;
-    margin: 10px;
+table {
+    border-collapse: collapse;
+    text-align: center;
+
+}
+
+th {
+    padding: 10px 20px;
+}
+
+td {
+    padding: 40px 20px;
+    border-bottom: 2px solid black;
 }
 
 thead {
-    background-color: gray;
+    background-color: #c4c3c3;
+}
+
+button {
+    font-size: medium;
+    padding: 1% 5%;
 }
