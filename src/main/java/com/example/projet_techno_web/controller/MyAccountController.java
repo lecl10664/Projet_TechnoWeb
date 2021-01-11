@@ -1,6 +1,7 @@
 package com.example.projet_techno_web.controller;
 
 
+import com.example.projet_techno_web.data.UserDAO;
 import com.example.projet_techno_web.data.UserUpdateDAO;
 import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
