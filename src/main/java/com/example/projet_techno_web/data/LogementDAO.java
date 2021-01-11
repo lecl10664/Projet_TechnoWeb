@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface LogementDAO extends JpaRepository<Logement,Long> {
 
-    @Query("select l from Logement  where l.ville like :x")
+    @Query("select l from Logement l where l.ville like :x")
     public List<Logement> findByVille(@Param("x") String keyWord);
 
 }

@@ -19,7 +19,7 @@
     <div class="recherche">
         <label>Rechercher un logement par ville :
             <input type="search" placeholder="Ville" id="recherche" name="recherche">
-            <input type="submit" onclick="recherche()" value="Rechercher">
+            <input type="submit" onclick="recherche(document.querySelector('#recherche').value)" value="Rechercher">
         </label>
     </div>
     <!-- tableau des logements disponibles -->
