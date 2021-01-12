@@ -39,7 +39,7 @@ public class LogementController {
         return logementDAO.findById(id);
     }
 
-    @PostMapping("/logement")
+    @PostMapping("/ajoutLogement")
     public Logement saveLogement(@RequestBody Logement logement) {
         return logementDAO.save(logement);
     }

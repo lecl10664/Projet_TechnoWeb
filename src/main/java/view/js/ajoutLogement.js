@@ -12,7 +12,7 @@ function saveLogement(form) {
 console.log(logement);
 
     // prepare the post request
-    fetch("http://localhost:8080/logement", {
+    fetch("http://localhost:8080/ajoutLogement", {
         method:"POST",
         headers: {"Accept": "application/json, text/plain, */*",
         "Content-type":"application/json"},
