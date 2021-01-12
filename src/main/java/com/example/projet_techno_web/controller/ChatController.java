@@ -1,12 +1,10 @@
 package com.example.projet_techno_web.controller;
 
 import com.example.projet_techno_web.data.ChatDAO;
-import com.example.projet_techno_web.data.ChatUpdateDAO;
 import com.example.projet_techno_web.data.UserDAO;
 import com.example.projet_techno_web.model.Chat;
 import com.example.projet_techno_web.model.Message;
 import com.example.projet_techno_web.model.User;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
