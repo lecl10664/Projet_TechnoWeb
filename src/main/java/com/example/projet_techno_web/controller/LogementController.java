@@ -46,7 +46,7 @@ public class LogementController {
 
         model.addAttribute("newLogement", new Logement());
 
-        return "Logement";
+        return "logement";
     }
 
 
