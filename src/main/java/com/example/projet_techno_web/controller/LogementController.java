@@ -3,7 +3,9 @@ package com.example.projet_techno_web.controller;
 
 import com.example.projet_techno_web.model.Logement;
 import com.example.projet_techno_web.data.LogementDAO;
+import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,11 +41,11 @@ public class LogementController {
         return logementDAO.findById(id);
     }
 
-    @PostMapping("/ajoutLogement")
+    /*@PostMapping("/ajoutLogement")
     public Logement saveLogement(@RequestBody Logement logement) {
         return logementDAO.save(logement);
     }
-
+*/
     @DeleteMapping("/logement")
     public void deleteLogement(@RequestParam Long id) {
         logementDAO.deleteById(id);
@@ -51,6 +53,20 @@ public class LogementController {
 
 
 
+    @GetMapping("/ajoutLogement")
+    public String showPage(Model model){
+        model.addAttribute("newLogement",new Logement());
+        return "ajoutLogement";
+    }
+
+
+    @PostMapping("/ajoutLogement")
+    public String inscriptionUser(@ModelAttribute  Logement newLogement) {
+        String dir = "";
+        logementDAO.save(newLogement);
+
+        return "redirect:" + dir;
+    }
 
 
 
