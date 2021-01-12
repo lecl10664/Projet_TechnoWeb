@@ -2,8 +2,10 @@ package com.example.projet_techno_web.controller;
 
 
 import com.example.projet_techno_web.data.ChatDAO;
+import com.example.projet_techno_web.data.OccupationLogementDAO;
 import com.example.projet_techno_web.data.UserDAO;
 import com.example.projet_techno_web.model.Chat;
+import com.example.projet_techno_web.model.OccupationLogement;
 import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +22,13 @@ public class InscriptionController {
     @Autowired
     private final UserDAO userDAO;
     private final ChatDAO chatDAO;
+    private final OccupationLogementDAO occupationLogementDAO;
 
-    public InscriptionController(UserDAO userDAO, ChatDAO chatDAO) { this.userDAO = userDAO; this.chatDAO = chatDAO;}
+    public InscriptionController(UserDAO userDAO, ChatDAO chatDAO, OccupationLogementDAO occupationLogementDAO) {
+        this.userDAO = userDAO;
+        this.chatDAO = chatDAO;
+        this.occupationLogementDAO = occupationLogementDAO;
+    }
 
 
     @GetMapping("/signup")
@@ -53,6 +60,8 @@ public class InscriptionController {
             Chat chat = new Chat(user.getId(), listUser.get(i).getId());
             chatDAO.save(chat);
         }
+
+        OccupationLogement newOL = new OccupationLogement(user.getId(), 0,0, null,null ,0);
 
 
 
