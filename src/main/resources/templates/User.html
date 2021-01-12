@@ -11,8 +11,8 @@ Bienvenue <p th:text="${UserLogged.lName}"></p> <p th:text="${UserLogged.id}"></
 Ceci est la page de <d th:text="${user.lName}"></d> <d th:text="${user.fName}"></d>
 
 <form action="" th:action="@{/toChat}" th:object="${newUser}" method="POST">
-    <input type="text" th:field="*{id}" th:value="${user.id}" style="visibility: visible">
-    <input type="submit">
+    <input th:value="${user.id}" th:name="id" th:id="id" style="visibility: hidden">
+    <input type="submit" value="Contactez">
 </form>
 
 </body>
