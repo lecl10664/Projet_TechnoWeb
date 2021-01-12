@@ -11,10 +11,13 @@ public class OccupationLogement {
     @Id
     @GeneratedValue
     private long id;
+    private long idOwner;
     private long idMembre;
     private long idLogement;
-    private String date;
-    private String etat;
+    private String dateA;
+    private String dateD;
+
+    private long etat; // "demande" "ok"
 
 
 
@@ -22,11 +25,12 @@ public class OccupationLogement {
     //Constructors
     public OccupationLogement() {
     }
-    public OccupationLogement(long id, long idMembre, long idLogement, String date, String etat) {
-        this.id = id;
+    public OccupationLogement(long idOwner, long idMembre, long idLogement, String dateA, String dateD, long etat) {
+        this.idOwner = idOwner;
         this.idMembre = idMembre;
         this.idLogement = idLogement;
-        this.date = date;
+        this.dateA = dateA;
+        this.dateD = dateD;
         this.etat = etat;
     }
 
@@ -38,6 +42,14 @@ public class OccupationLogement {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdOwner() {
+        return idOwner;
+    }
+
+    public void setIdOwner(long idOwner) {
+        this.idOwner = idOwner;
     }
 
     public long getIdMembre() {
@@ -56,19 +68,27 @@ public class OccupationLogement {
         this.idLogement = idLogement;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateA() {
+        return dateA;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateA(String dateA) {
+        this.dateA = dateA;
     }
 
-    public String getEtat() {
+    public String getDateD() {
+        return dateD;
+    }
+
+    public void setDateD(String dateD) {
+        this.dateD = dateD;
+    }
+
+    public long getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(long etat) {
         this.etat = etat;
     }
 }
