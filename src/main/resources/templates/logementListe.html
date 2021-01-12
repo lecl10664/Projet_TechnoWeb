@@ -47,7 +47,13 @@
                 <td th:text="${element.adresse}"></td>
                 <td th:text="${element.codePostal}"></td>
                 <td th:text="${element.ville}"></td>
-                <td><button onclick=>Voir le logement</button></td>
+
+                <form action="" th:action="@{/toLogement}" th:object="${newLogement}" method="POST">
+                    <input th:value="${logement.id}" th:name="id" th:id="id" style="visibility: hidden">
+                    <input type="submit" value="Page du logement">
+                </form>
+
+
             </tr>
             </tbody>
         </table>

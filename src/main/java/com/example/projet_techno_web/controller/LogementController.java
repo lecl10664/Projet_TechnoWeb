@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,15 +30,11 @@ public class LogementController {
         model.addAttribute("listeLogement", logementDAO.findAll());
 
         model.addAttribute("logementRecherche", new Logement());
+        model.addAttribute("newLogement", new Logement());
 
         return "logementListe";
     }
 
-
-    //Exemple pour recup infos de session
-    //@GetMapping("/logementExemple")
-    //public String logement (@ModelAttribute("UserLogged") User userLoggged) {
-    // et la tu as l'object userLogged, qui est un user avec les infos du user connecté
 
 
     @GetMapping("/logement/{id}")
@@ -51,6 +48,20 @@ public class LogementController {
 
         return "Logement";
     }
+
+
+    @PostMapping("/toLogement")
+    public String toLogement(@ModelAttribute("newLogement") Logement logement){
+        Long dir = logement.getId();
+        return "redirect:logement/"+dir;
+    }
+
+
+
+
+
+
+
 
     @GetMapping("/logement")
     public Optional<Logement> getLogementById(@RequestParam Long id) {
@@ -88,7 +99,6 @@ public class LogementController {
     @GetMapping("/rechercheLogement/{villeRecherche}")
     public String showLogementRecherche(Model model, @PathVariable String villeRecherche) {
         model.addAttribute("listeLogementRecherche", logementDAO.findByVille(villeRecherche));
-
         return "logementRecherche";
     }
 
