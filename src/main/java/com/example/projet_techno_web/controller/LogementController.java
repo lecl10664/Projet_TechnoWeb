@@ -28,6 +28,8 @@ public class LogementController {
     public String showLogementListe(Model model) {
         model.addAttribute("listeLogement", logementDAO.findAll());
 
+        model.addAttribute("villeRecherche", "");
+
         return "logementListe";
     }
 
