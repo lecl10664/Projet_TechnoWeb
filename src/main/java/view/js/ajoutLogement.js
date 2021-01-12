@@ -9,7 +9,6 @@ function saveLogement(form) {
         services:form.servicesLogement.value,
         contraintes:form.contraintesLogement.value,
     }
-console.log(logement);
 
     // prepare the post request
     fetch("http://localhost:8080/logement", {
