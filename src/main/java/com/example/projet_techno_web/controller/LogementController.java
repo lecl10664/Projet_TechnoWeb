@@ -28,7 +28,7 @@ public class LogementController {
     public String showLogementListe(Model model) {
         model.addAttribute("listeLogement", logementDAO.findAll());
 
-        model.addAttribute("villeRecherche", "");
+        model.addAttribute("logementRecherche", new Logement());
 
         return "logementListe";
     }
@@ -81,8 +81,8 @@ public class LogementController {
     }
 
     @PostMapping("/rechercheLogement")
-    public String redirectLogementRecherche(@ModelAttribute String villeRecherche){
-        return "redirect:rechercheLogement/" + villeRecherche;
+    public String redirectLogementRecherche(@ModelAttribute Logement logementRecherche){
+        return "redirect:rechercheLogement/" + logementRecherche.getVille();
     }
 
 

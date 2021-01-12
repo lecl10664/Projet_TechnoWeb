@@ -19,8 +19,8 @@
 
     <div class="recherche">
         <label>Rechercher un logement par ville :
-            <form action="" th:action="@{/rechercheLogement}" method="POST">
-                <input type="search" placeholder="Ville" id="recherche" th:field="*{villeRecherche}">
+            <form action="" th:action="@{/rechercheLogement}" th:object="${logementRecherche}" method="POST">
+                <input type="search" placeholder="Ville" id="recherche" th:field="*{ville}">
                 <input type="submit" value="Rechercher">
             </form>
         </label>
