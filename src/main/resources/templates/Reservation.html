@@ -7,5 +7,110 @@
 <body>
 
 
+<!--Si il n'y a aucune reservation  -->
+<div th:if="${OL.getEtat()} == 0">
+
+
+
+    <!--Si c'est pour l'owner  -->
+    <div th:if="${OL.idOwner} == ${UserLogged.id}">
+        <p>
+            Bonjour, vous pouvez proposer une disponibilité de ce logement aux membres.
+            Choisissez une date d'arrivé et une date de départ.
+        </p>
+
+        <form action="" th:action="@{/addReservation}" th:object="${newOL}" method="POST">
+            <p>date d'arrivé:</p>
+            <input type="text" th:field="*{dateA}">
+            <p>date de départ:</p>
+            <input type="text" th:field="*{dateD}">
+            <input th:value="${OL.idLogement}" th:name="idLogement" th:id="idLogement" style="visibility: hidden">
+            <input type="submit">
+        </form>
+
+
+
+    </div>
+
+    <!--Si c'est pour les autres -->
+    <div th:if="${OL.idOwner} != ${UserLogged.id}">
+    <p> Bonjour, aucune proposition n'a été faite par le propriétaire. Revenez plus tard !
+    </p>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!--Si il a une proposition  -->
+<div th:if="${OL.getEtat()} == 1">
+
+    <!--Si c'est pour l'owner  -->
+    <div th:if="${OL.idOwner} == ${UserLogged.id}">
+        <p>
+            Bonjour, vous avez proposé une réservation. Voici les dates :
+        </p>
+        Du <div th:text="${OL.dateA}"></div> au <div th:text="${OL.dateD}"></div>
+
+        <!--le form du futur  -->
+
+    </div>
+
+    <!--Si c'est pour les autres -->
+    <div th:if="${OL.idOwner} != ${UserLogged.id}">
+        <p>
+            Bonjour, une reservation est proposé par le propriétaire. Voici les dates :
+        </p>
+        Du <div th:text="${OL.dateA}"></div> au <div th:text="${OL.dateD}"></div>
+    </div>
+
+    Voulez-vous accepter cette proposition ?
+    <form action="" th:action="@{/reservationOK}" th:object="${newOL}" method="POST">
+        <p>Message:</p>
+        <input th:value="${OL.idLogement}" th:name="idLogement" th:id="idLogement" style="visibility: hidden">
+        <input type="submit">
+    </form>
+</div>
+
+
+
+
+
+<!--Si c'est en cours -->
+<div th:if="${OL.getEtat()} == 2">
+
+    <!--Si c'est pour l'owner  -->
+    <div th:if="${OL.idOwner} == ${UserLogged.id}">
+        <p>
+            Bonjour, votre logement est actuellement en location par un membre.
+            Validez sur celui-ci vous a été remis.
+        </p>
+        <form action="" th:action="@{/reservationFini}" th:object="${newOL}" method="POST">
+            <input th:value="${OL.idLogement}" th:name="idLogement" th:id="idLogement" style="visibility: hidden">
+            <input type="submit" value="Contactez">
+        </form>
+
+    </div>
+
+    <!--Si c'est pour les autres -->
+    <div th:if="${OL.idOwner} != ${UserLogged.id}">
+        <p>
+            Bonjour, aucune proposition n'a été faite par le propriétaire. Revenez plus tard !
+        </p>
+</div>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

@@ -24,7 +24,7 @@ Envoyer un message
 <form action="" th:action="@{/chat}" th:object="${newMsg}" method="POST">
     <p>Message:</p>
     <input type="text" th:field="*{text}">
-    <input type="text" th:field="*{idUser}">
+    <input th:value="${UserChat.id}" th:name="idUser" th:id="idUser" style="visibility: hidden">
     <input type="submit">
 </form>
 
