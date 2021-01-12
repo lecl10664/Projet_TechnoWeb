@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Logement</title>
-    <link rel="stylesheet" href="../static/css/logement.css">
+    <link rel="stylesheet" href="../static/css/logement.css" th:href="@{/css/logement.css}">
 </head>
 <body>
 <div class="header">
@@ -16,8 +16,9 @@
 <div class="row">
 <div class="columnL">
     <h1 id="nom"></h1>
+    <p th:text="${logement.nom}"></p>
     <p th:text="${logement.ville}"></p>
-    <img id="imgLogement" src="../static/img/maison.jpg" alt="image maison/logement" width="70%">
+    <img id="imgLogement" src="../static/img/maison.jpg" alt="image maison/logement" width="70%" th:href="@{/img/maison.jpg}">
     <p th:text="${logement.type}"></p>
     <p th:text="${logement.adresse}"></p>
 </div>

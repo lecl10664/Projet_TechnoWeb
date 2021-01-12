@@ -38,7 +38,7 @@ public class LogementController {
 
 
     @GetMapping("/logement/{id}")
-    public String showLogement(@PathVariable("id")Long id, Model model){
+    public String showLogement(@PathVariable Long id, Model model){
 
         Optional<Logement> listL = logementDAO.findById(id);
         Logement logement = listL.get();
@@ -57,16 +57,6 @@ public class LogementController {
     }
 
 
-
-
-
-
-
-
-    @GetMapping("/logement")
-    public Optional<Logement> getLogementById(@RequestParam Long id) {
-        return logementDAO.findById(id);
-    }
 
     @DeleteMapping("/logement")
     public void deleteLogement(@RequestParam Long id) {
