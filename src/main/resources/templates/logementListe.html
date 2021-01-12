@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/logementListe.css">
+    <link rel="stylesheet" href="../static/css/logementListe.css">
     <title>Liste des logements</title>
 </head>
 <body>
     <div class="header">
         <p class="titre">Mobil'Home</p>
         <a href="Connexion.html">Se connecter</a>
-        <a href="../../resources/templates/Inscription.html">S'inscrire</a>
+        <a href="Inscription.html">S'inscrire</a>
         <a href="logementListe.html">Logements disponibles</a>
     </div>
 
 
 
     <h1>Logements disponibles</h1>
+
     <div class="recherche">
         <label>Rechercher un logement par ville :
-            <input type="search" placeholder="Ville" id="recherche" name="recherche">
-            <input type="submit" onclick="recherche(document.querySelector('#recherche').value)" value="Rechercher">
+            <form action="" th:action="@{/rechercheLogement}" th:object="${villeRecherche}" method="POST">
+                <input type="search" placeholder="Ville" id="recherche" th:field="*{villeRecherche}">
+                <input type="submit" value="Rechercher">
+            </form>
         </label>
     </div>
+
     <!-- tableau des logements disponibles -->
     <div class="tableau">
         <table>
@@ -36,12 +40,20 @@
                 </tr>
             </thead>
             <tbody id="listTable">
+            <tr th:each="element:${listeLogement}">
+                <td th:text="${element.id}"></td>
+                <td th:text="${element.nom}"></td>
+                <td th:text="${element.type}"></td>
+                <td th:text="${element.adresse}"></td>
+                <td th:text="${element.codePostal}"></td>
+                <td th:text="${element.ville}"></td>
+                <td><button onclick=>Voir le logement</button></td>
+            </tr>
             </tbody>
         </table>
     </div>
     <div class="footer">
         <p>Footer</p>
     </div>
-<script src="js/logementListe.js"></script>
 </body>
 </html>

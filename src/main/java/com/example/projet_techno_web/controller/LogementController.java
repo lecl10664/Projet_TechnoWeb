@@ -4,31 +4,33 @@ package com.example.projet_techno_web.controller;
 import com.example.projet_techno_web.model.Logement;
 import com.example.projet_techno_web.data.LogementDAO;
 import com.example.projet_techno_web.model.User;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("*")
-@RestController
+
+@Controller
 @SessionAttributes({"UserLogged"})
 public class LogementController {
 
     @Autowired
     LogementDAO logementDAO;
 
+
+
+
     @GetMapping("/logementListe")
-    public List<Logement> getLogementListe() {
-        return logementDAO.findAll();
+    public String showLogementListe(Model model) {
+        model.addAttribute("listeLogement", logementDAO.findAll());
+
+        return "logementListe";
     }
 
-    @GetMapping("/logementRecherche")
-    public List<Logement> getLogementListeByVille(@RequestParam String ville) {
-        return logementDAO.findByVille(ville);
-
-    }
 
     //Exemple pour recup infos de session
     //@GetMapping("/logementExemple")
@@ -41,11 +43,6 @@ public class LogementController {
         return logementDAO.findById(id);
     }
 
-    /*@PostMapping("/ajoutLogement")
-    public Logement saveLogement(@RequestBody Logement logement) {
-        return logementDAO.save(logement);
-    }
-*/
     @DeleteMapping("/logement")
     public void deleteLogement(@RequestParam Long id) {
         logementDAO.deleteById(id);
@@ -54,7 +51,7 @@ public class LogementController {
 
 
     @GetMapping("/ajoutLogement")
-    public String showPage(Model model){
+    public String showPageAjoutLogement(Model model){
         model.addAttribute("newLogement",new Logement());
         return "ajoutLogement";
     }
@@ -67,6 +64,25 @@ public class LogementController {
 
         return "redirect:" + dir;
     }
+
+
+    /*@GetMapping("/rechercheLogement")
+    public String showPageRecherche(Model model){
+        model.addAttribute("villeRecherche", "");
+        return "logementRecherche";
+    }*/
+    @GetMapping("/rechercheLogement/{villeRecherche}")
+    public String showLogementRecherche(Model model, @PathVariable String villeRecherche) {
+        model.addAttribute("listeLogementRecherche", logementDAO.findByVille(villeRecherche));
+
+        return "logementRecherche";
+    }
+
+    @PostMapping("/rechercheLogement")
+    public String redirectLogementRecherche(@ModelAttribute String villeRecherche){
+        return "redirect:rechercheLogement/" + villeRecherche;
+    }
+
 
 
 
