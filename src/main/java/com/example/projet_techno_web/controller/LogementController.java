@@ -40,6 +40,16 @@ public class LogementController {
     // et la tu as l'object userLogged, qui est un user avec les infos du user connecté
 
 
+    @GetMapping("/logement/{id}")
+    public String showLogement(@PathVariable("id")Long id, Model model){
+
+        Optional<Logement> listL = logementDAO.findById(id);
+        Logement logement = listL.get();
+        model.addAttribute("logement",logement);
+
+        return "Logement";
+    }
+
     @GetMapping("/logement")
     public Optional<Logement> getLogementById(@RequestParam Long id) {
         return logementDAO.findById(id);
