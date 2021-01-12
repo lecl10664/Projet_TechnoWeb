@@ -1,10 +1,12 @@
 package com.example.projet_techno_web.controller;
 
 import com.example.projet_techno_web.data.ChatDAO;
+import com.example.projet_techno_web.data.ChatUpdateDAO;
 import com.example.projet_techno_web.data.UserDAO;
 import com.example.projet_techno_web.model.Chat;
 import com.example.projet_techno_web.model.Message;
 import com.example.projet_techno_web.model.User;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,8 +59,14 @@ public class ChatController {
 
 
     @PostMapping("/toChat")
-    public String redirectToChat(@ModelAttribute("newUser") User newUser, Model model){
+    public String redirectToChat(@ModelAttribute("newUser") User newUser,@ModelAttribute("UserLogged") User userLogged, Model model){
         long dir = newUser.getId();
+
+        Optional<User> listUser = userDAO.findById(dir);
+        User checkUser = listUser.get();
+        model.addAttribute("UserChat", checkUser);
+
+
         return "redirect:chat/"+dir;
     }
 
@@ -66,22 +74,16 @@ public class ChatController {
 
 
     @PostMapping("/chat")
-    public String addMessage(@ModelAttribute("UserLogged") User userLogged, @ModelAttribute("newMsg") Message msg, Model model){
+    public String addMessage(@ModelAttribute("UserLogged") User userLogeed, @ModelAttribute("UserChat") User userChat, @ModelAttribute("newMsg") Message msg, Model model){
+        Chat chat = new Chat();
+        List<Message> listMsg;
 
+        List<Chat> listChat = chatDAO.findByIDs(1, msg.getIdUser());
+        chat = listChat.get(0);
+        chat.getMessages().add(msg);
+        chatDAO.save(chat);
 
-        if (userLogged.getId() < msg.getIdUser()) {
-            List<Chat> listChat = chatDAO.findByIDs(userLogged.getId(), msg.getIdUser());
-            Chat chat = listChat.get(0);
-            chat.getMessages().add(msg);
-            chatDAO.save(chat);
-        } else if (userLogged.getId() > msg.getIdUser()){
-            List<Chat> listChat = chatDAO.findByIDs(msg.getIdUser(), userLogged.getId());
-            Chat chat = listChat.get(0);
-            chat.getMessages().add(msg);
-            chatDAO.save(chat);
-        }
-
-        return "redirect:chat/"+msg.getIdUser();
+        return "redirect:chat/"+msg.getId();
     }
 
 }

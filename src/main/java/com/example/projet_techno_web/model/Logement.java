@@ -15,6 +15,9 @@ public class Logement {
     private String ville;
 
     @Column(length=1000000)
+    private String description;
+
+    @Column(length=1000000)
     private String contraintes;
 
     @Column(length=1000000)
@@ -36,6 +39,7 @@ public class Logement {
         this.adresse = adresse;
         this.ville = ville;
         this.codePostal = codePostal;
+        this.description = description;
     }
 
     public Logement() {
@@ -89,6 +93,14 @@ public class Logement {
 
     public void setCodePostal(Integer codePostal) {
         this.codePostal = codePostal;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public User getUser() {

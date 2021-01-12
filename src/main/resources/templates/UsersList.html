@@ -12,10 +12,13 @@
 
     <p th:text="${user.lName}"></p>
     <p th:text="${user.fName}"></p>
+    <p th:text="${user.eMail}"></p>
+    <p th:text="${user.password}"></p>
+    <p th:text="${user.id}"></p>
 
     <form action="" th:action="@{/user}" th:object="${newUser}" method="POST">
-        <input th:value="${user.id}" th:name="id" th:id="id" style="visibility: hidden">
-        <input type="submit" value="Page du profil">
+        <input th:value="${user.id}" type="text" th:field="${newUser.id}">
+        <input type="submit">
     </form>
 </div>
 
