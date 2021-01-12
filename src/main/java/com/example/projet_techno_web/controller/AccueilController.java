@@ -19,7 +19,7 @@ public class AccueilController {
     @GetMapping("/home")
     public String showPageSession(@ModelAttribute("UserLogged") User userLogged){
 
-
+        
         return "Accueil";
     }
 
