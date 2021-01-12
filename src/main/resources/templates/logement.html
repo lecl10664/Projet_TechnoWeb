@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Logement</title>
@@ -16,31 +16,30 @@
 <div class="row">
 <div class="columnL">
     <h1 id="nom"></h1>
-    <p id="ville"></p>
+    <p th:text="${logement.ville}"></p>
     <img id="imgLogement" src="../static/img/maison.jpg" alt="image maison/logement" width="70%">
-    <p id="type"></p>
-    <p id="adresse"></p>
+    <p th:text="${logement.type}"></p>
+    <p th:text="${logement.adresse}"></p>
 </div>
-<div class="columnR">
-    <h3>Ce logement vous plait ?</h3>
-    <p>Sur quelle date ?</p>
-    <form onsubmit="return false">
-        <label>Date de votre séjour
-            <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31">
-        </label>
-        <input type="submit" value="OK">
-    </form>
-</div>
+
 </div>
 <div class="services">
     <h3>Services à effectuer sur place</h3>
-    <p id="services"></p>
+    <p th:text="${logement.services}"></p>
 </div>
 <div class="contraintes">
     <h3>Contraintes du logement</h3>
-    <p id="contraintes"></p>
+    <p th:text="${logement.contraintes}"></p>
 </div>
 
+<div>
+    Ce logement vous plait-il ? Cliquez ici pour voir les réservations
+</div>
+
+<form action="" th:action="@{/toReservation}" th:object="${newLogement}" method="POST">
+    <input th:value="${logement.id}" th:name="id" th:id="id" style="visibility: hidden">
+    <input type="submit" value="Contactez">
+</form>
 
 
 <div class="footer">

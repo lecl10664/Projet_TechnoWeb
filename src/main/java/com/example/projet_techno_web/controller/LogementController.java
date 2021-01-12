@@ -47,6 +47,8 @@ public class LogementController {
         Logement logement = listL.get();
         model.addAttribute("logement",logement);
 
+        model.addAttribute("newLogement", new Logement());
+
         return "Logement";
     }
 
