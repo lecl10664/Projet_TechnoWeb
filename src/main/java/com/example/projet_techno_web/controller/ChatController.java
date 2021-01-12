@@ -59,14 +59,8 @@ public class ChatController {
 
 
     @PostMapping("/toChat")
-    public String redirectToChat(@ModelAttribute("newUser") User newUser,@ModelAttribute("UserLogged") User userLogged, Model model){
+    public String redirectToChat(@ModelAttribute("newUser") User newUser, Model model){
         long dir = newUser.getId();
-
-        Optional<User> listUser = userDAO.findById(dir);
-        User checkUser = listUser.get();
-        model.addAttribute("UserChat", checkUser);
-
-
         return "redirect:chat/"+dir;
     }
 
@@ -74,16 +68,22 @@ public class ChatController {
 
 
     @PostMapping("/chat")
-    public String addMessage(@ModelAttribute("UserLogged") User userLogeed, @ModelAttribute("UserChat") User userChat, @ModelAttribute("newMsg") Message msg, Model model){
-        Chat chat = new Chat();
-        List<Message> listMsg;
+    public String addMessage(@ModelAttribute("UserLogged") User userLogged, @ModelAttribute("newMsg") Message msg, Model model){
 
-        List<Chat> listChat = chatDAO.findByIDs(1, msg.getIdUser());
-        chat = listChat.get(0);
-        chat.getMessages().add(msg);
-        chatDAO.save(chat);
 
-        return "redirect:chat/"+msg.getId();
+        if (userLogged.getId() < msg.getIdUser()) {
+            List<Chat> listChat = chatDAO.findByIDs(userLogged.getId(), msg.getIdUser());
+            Chat chat = listChat.get(0);
+            chat.getMessages().add(msg);
+            chatDAO.save(chat);
+        } else if (userLogged.getId() > msg.getIdUser()){
+            List<Chat> listChat = chatDAO.findByIDs(msg.getIdUser(), userLogged.getId());
+            Chat chat = listChat.get(0);
+            chat.getMessages().add(msg);
+            chatDAO.save(chat);
+        }
+
+        return "redirect:chat/"+msg.getIdUser();
     }
 
 }
