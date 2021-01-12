@@ -3,7 +3,6 @@ package com.example.projet_techno_web.controller;
 
 import com.example.projet_techno_web.model.Logement;
 import com.example.projet_techno_web.data.LogementDAO;
-import com.example.projet_techno_web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +25,23 @@ public class LogementController {
     @GetMapping("/logementRecherche")
     public List<Logement> getLogementListeByVille(@RequestParam String ville) {
         return logementDAO.findByVille(ville);
+
     }
+
+    //Exemple pour recup infos de session
+    //@GetMapping("/logementExemple")
+    //public String logement (@ModelAttribute("UserLogged") User userLoggged) {
+    // et la tu as l'object userLogged, qui est un user avec les infos du user connecté
+
 
     @GetMapping("/logement")
     public Optional<Logement> getLogementById(@RequestParam Long id) {
         return logementDAO.findById(id);
+    }
+
+    @PostMapping("/ajoutLogement")
+    public Logement saveLogement(@RequestBody Logement logement) {
+        return logementDAO.save(logement);
     }
 
     @DeleteMapping("/logement")
@@ -39,10 +50,6 @@ public class LogementController {
     }
 
 
-    @PostMapping("/logement")
-    public Logement saveLogement(@RequestBody Logement logement) {
-        return logementDAO.save(logement);
-    }
 
 
 
