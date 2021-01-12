@@ -49,7 +49,7 @@
                 <td th:text="${element.ville}"></td>
 
                 <form action="" th:action="@{/toLogement}" th:object="${newLogement}" method="POST">
-                    <input th:value="${logement.id}" th:name="id" th:id="id" style="visibility: hidden">
+                    <input th:value="${element.id}" th:name="id" th:id="id" style="visibility: hidden">
                     <input type="submit" value="Page du logement">
                 </form>
 
